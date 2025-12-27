@@ -12,6 +12,7 @@ class Notification(models.Model):
     CANAL_CHOICES = [
         ('sms', 'SMS'),
         ('email', 'Email'),
+        ('whatsapp', 'WhatsApp'),
         ('notification', 'Notification interne'),
     ]
 

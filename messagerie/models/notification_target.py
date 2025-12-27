@@ -15,8 +15,8 @@ class NotificationTarget(models.Model):
         related_name='targets'
     )
 
-    destinataire = models.ForeignKey(
-    "accounts.User",
+    eleve = models.ForeignKey(
+    "Eleve",
         on_delete=models.CASCADE,
         related_name='notifications'
     )
@@ -31,7 +31,7 @@ class NotificationTarget(models.Model):
     date_lecture = models.DateTimeField(null=True, blank=True)
 
     class Meta:
-        unique_together = ('notification', 'destinataire')
+        unique_together = ('notification', 'eleve')
 
     def __str__(self):
-        return f"{self.notification.titre} → {self.destinataire}"
+        return f"{self.notification.titre} → {self.eleve}"
