@@ -22,4 +22,5 @@ urlpatterns = [
 
     # Routes de l'application Accounts (login, CRUD users, etc.)
     path('api/accounts/', include('accounts.urls')),
+    path('api/messagerie/', include('messagerie.urls')),
 ]
