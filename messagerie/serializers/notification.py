@@ -3,6 +3,7 @@ from rest_framework import serializers
 
 from messagerie.models import Notification, Eleve, NotificationTarget
 from messagerie.serializers.notification_target import NotificationTargetSerializer
+from messagerie.services.dispatcher import NotificationDispatcher
 
 
 class NotificationWriteSerializer(serializers.ModelSerializer):
@@ -120,6 +121,10 @@ class NotificationWriteSerializer(serializers.ModelSerializer):
 
         # Insertion en masse pour des raisons de performance
         NotificationTarget.objects.bulk_create(targets)
+
+        # Envoi effectif
+        for target in targets:
+            NotificationDispatcher.dispatch(target)
 
         return notification
 
