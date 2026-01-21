@@ -113,8 +113,7 @@ class NotificationWriteSerializer(serializers.ModelSerializer):
         targets = [
             NotificationTarget(
                 notification=notification,
-                eleve=eleve,
-                date_envoi = now
+                eleve=eleve
             )
             for eleve in eleves
         ]
