@@ -7,16 +7,15 @@ class NotificationDispatcher:
     @staticmethod
     def dispatch(target):
         """
-        Envoie la notification selon le canal choisi.
+        Envoie la notification selon le canal choisi
+        et met à jour le NotificationTarget.
         """
-        eleve = target.eleve
-        notification = target.notification
 
-        phone = eleve.telephone_parent
-        message = notification.contenu
+        canal = target.notification.canal
 
-        if notification.canal == 'SMS':
-            SmsService.send(phone, message)
+        if canal == 'SMS':
+            SmsService.send(target)
 
-        elif notification.canal == 'WHATSAPP':
-            WhatsAppService.send(phone, message)
+        elif canal == 'WHATSAPP':
+            WhatsAppService.send(target)
+
