@@ -30,6 +30,9 @@ class NotificationTarget(models.Model):
     date_envoi = models.DateTimeField(null=True, blank=True)
     date_lecture = models.DateTimeField(null=True, blank=True)
 
+    twilio_sid = models.CharField(max_length=255, blank=True, null=True)
+    error_message = models.TextField(blank=True, null=True)
+
     class Meta:
         unique_together = ('notification', 'eleve')
 
